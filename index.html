@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Texty gruma, pahuma</title>
+ 
+    <script>
+
+	async function pahatexty() {
+
+            var userInput = document.getElementById("myText").value;			
+            var blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+        
+        	const fileHandle = await window.showSaveFilePicker();
+       		const fileStream = await fileHandle.createWritable();
+        	await fileStream.write(blob);
+        	await fileStream.close();           
+        }
+
+    </script>
+</head>
+<body>
+
+    <textarea id="myText" rows="4" cols="50">
+ Stegh gra texty, me chors togh gra...
+    </textarea>
+
+    <button type="button" onclick="pahatexty();">Sgma togh paha txt-i mej</button>
+	
+</body>
+</html>
